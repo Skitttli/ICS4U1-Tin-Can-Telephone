@@ -42,12 +42,20 @@ public class tinCanTelephone {
 				int curX = Integer.parseInt(st.nextToken());
 				int curY = Integer.parseInt(st.nextToken());
 
-				if(lowestY.containsKey(curX) && lowestY.get(curX) < curY){
+				if(!lowestY.containsKey(curX)){
 					lowestY.put(curX, curY);
+				}else{
+					if(lowestY.get(curX) < curY){
+						lowestY.replace(curX, curY);
+					}
 				}
 
-				if(highestY.containsKey(curX) && highestY.get(curX) > curY){
+				if(!highestY.containsKey(curX)){
 					highestY.put(curX, curY);
+				}else{
+					if(highestY.get(curX) > curY){
+						highestY.replace(curX, curY);
+					}
 				}
       }
 
