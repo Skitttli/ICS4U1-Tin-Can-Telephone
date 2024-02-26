@@ -8,10 +8,6 @@ public class tinCanTelephone {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
-		//2000 because it can be from -1000 to 1000
-		HashMap<Integer,Integer> lowestY=new HashMap<>(),highestY=new HashMap<>();
-
-
 		//X coordinate of Romy's window, 0 in test case
 		int xR = Integer.parseInt(st.nextToken());
 	  //Y coordinate of Romy's window, 0 in test case
@@ -22,7 +18,6 @@ public class tinCanTelephone {
 		int yJ = Integer.parseInt(st.nextToken());
 		
 		int counter=0;
-
 		int slope = (yJ-yR)/(xJ-xR);
 		int yInt = yJ-slope*xJ;
 
@@ -31,6 +26,7 @@ public class tinCanTelephone {
 
 	 	//Loop through how many buildings there are
 		for (int i = 0; i < numBuildings; i++) {
+			HashMap<Integer,Integer> lowestY=new HashMap<>(),highestY=new HashMap<>();
 
 			// Redeclare stringTokenizer for a new Line
 			st = new StringTokenizer(br.readLine());
@@ -70,11 +66,8 @@ public class tinCanTelephone {
 						break;
 					}
 				}
-
 			}
-
 		}
-
 		System.out.println(counter);
 	}
 }
