@@ -67,6 +67,7 @@ public class tinCanTelephone {
 				if(lowestY.containsKey(j)&&highestY.containsKey(j)){
 					if(curY<=highestY.get(j)&&curY>=lowestY.get(j)){
 						counter++;
+						break;
 					}
 				}
 
