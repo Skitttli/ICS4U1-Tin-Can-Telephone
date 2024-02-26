@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class tinCanTelephone {
@@ -8,12 +9,8 @@ public class tinCanTelephone {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		//2000 because it can be from -1000 to 1000
-		int[] lowestY=new int[2000],highestY= new int[2000];
+		HashMap<Integer,Integer> lowestY=new HashMap<>(),highestY=new HashMap<>();
 
-		for(int i=0;i<2000;i++){
-			lowestY[i] = -1001;
-			highestY[i] = 1001;
-		}
 
 		//X coordinate of Romy's window, 0 in test case
 		int xR = Integer.parseInt(st.nextToken());
@@ -42,16 +39,20 @@ public class tinCanTelephone {
 				int curX = Integer.parseInt(st.nextToken());
 				int curY = Integer.parseInt(st.nextToken());
 
-				if(lowestY[curX+1000] < curY){
-					lowestY[curX+1000] = curY;
+				if(lowestY.containsKey(curX) && lowestY.get(curX) < curY){
+					lowestY.put(curX, curY);
 				}
 
-				if(lowestY[curX+1000] > curY){
-					highestY[curX+1000] = curY;
-				}	
+				if(highestY.containsKey(curX) && highestY.get(curX) > curY){
+					highestY.put(curX, curY);
+				}
       }
 
-			//Now we loop through each 
+			//Now we loop through each y between the two points
+
+			for(int j = -1000;j<1000;j++){
+				
+			}
 
 		}
 	}
