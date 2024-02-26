@@ -10,6 +10,11 @@ public class tinCanTelephone {
 		//2000 because it can be from -1000 to 1000
 		int[] lowestY=new int[2000],highestY= new int[2000];
 
+		for(int i=0;i<2000;i++){
+			lowestY[i] = -1001;
+			highestY[i] = 1001;
+		}
+
 		//X coordinate of Romy's window, 0 in test case
 		int xR = Integer.parseInt(st.nextToken());
 	  //Y coordinate of Romy's window, 0 in test case
@@ -18,6 +23,8 @@ public class tinCanTelephone {
 		int xJ = Integer.parseInt(st.nextToken());
 		//Y coordinate of Jules window, 3 in test case
 		int yJ = Integer.parseInt(st.nextToken());
+
+		int slope = (yJ-yR)/(xJ-xR);
 
 		//Number of buildings, 1 in test case
 		int numBuildings = Integer.parseInt(br.readLine());
@@ -35,18 +42,17 @@ public class tinCanTelephone {
 				int curX = Integer.parseInt(st.nextToken());
 				int curY = Integer.parseInt(st.nextToken());
 
-				if(lowestY[curX]==null){
-
+				if(lowestY[curX+1000] < curY){
+					lowestY[curX+1000] = curY;
 				}
 
-				//use an array
-
-				//loop from -1000 to 1000
-				//store lowest point
-				//store highest point
-				//for each column
-				
+				if(lowestY[curX+1000] > curY){
+					highestY[curX+1000] = curY;
+				}	
       }
+
+			//Now we loop through each 
+
 		}
 	}
 }
