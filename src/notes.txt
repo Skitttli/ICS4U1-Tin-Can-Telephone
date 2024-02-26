@@ -1,0 +1,10 @@
+this is where we will keep our notes and todos
+store lowest point
+store highest point
+use an array to store the highest and lowest
+loop from -1000 to 1000
+for each column
+equation of a line: y=mx+b
+m = slope
+b = y intercept of the line
+slope = yJ-yR/xJ-xR
