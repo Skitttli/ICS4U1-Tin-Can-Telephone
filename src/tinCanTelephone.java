@@ -45,7 +45,7 @@ public class tinCanTelephone {
 				if(!lowestY.containsKey(curX)){
 					lowestY.put(curX, curY);
 				}else{
-					if(lowestY.get(curX) < curY){
+					if(lowestY.get(curX) > curY){
 						lowestY.replace(curX, curY);
 					}
 				}
@@ -53,7 +53,7 @@ public class tinCanTelephone {
 				if(!highestY.containsKey(curX)){
 					highestY.put(curX, curY);
 				}else{
-					if(highestY.get(curX) > curY){
+					if(highestY.get(curX) < curY){
 						highestY.replace(curX, curY);
 					}
 				}
