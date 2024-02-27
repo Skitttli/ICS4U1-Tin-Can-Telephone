@@ -79,19 +79,19 @@ public class tinCanTelephone {
 					if(xR<=maxX&&xR>=minX){
 						counter++;
 					}
-			}
-			if(horizontal){
+			}else if(horizontal){
 				if(yR<=maxY&&yR>=minY){
 					counter++;
 				}
-			}
-			for(int j = -1000;j<1000;j++){
-				int curY = slope*j+yInt;
+			}else{
+				for(int j = -1000;j<1000;j++){
+					int curY = slope*j+yInt;
 
-				if(lowestY.containsKey(j)&&highestY.containsKey(j)){
-					if(curY<=highestY.get(j)&&curY>=lowestY.get(j)){
-						counter++;
-						break;
+					if(lowestY.containsKey(j)&&highestY.containsKey(j)){
+						if(curY<=highestY.get(j)&&curY>=lowestY.get(j)){
+							counter++;
+								break;
+						}
 					}
 				}
 			}
