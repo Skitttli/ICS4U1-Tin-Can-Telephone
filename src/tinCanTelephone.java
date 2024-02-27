@@ -66,7 +66,10 @@ public class tinCanTelephone {
 			//Now we loop through each y between the two points
 			if(vertical){
 				if(lowestY.containsKey(xJ)&&highestY.containsKey(xJ)){
-					if(lowestY.get(xJ))
+					if(xR>=lowestY.get(xJ)&&xR<=lowestY.get(xJ)){
+						counter++;
+						break;
+					}
 				}
 			}
 			for(int j = -1000;j<1000;j++){
