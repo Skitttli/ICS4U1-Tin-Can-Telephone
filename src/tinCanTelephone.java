@@ -40,11 +40,15 @@ public class tinCanTelephone {
 			st = new StringTokenizer(br.readLine());
 			// Number of corners the current building has
 			int numCorners = Integer.parseInt(st.nextToken());
+			int maxX = -1001, minX = 1001;
 
 			//For loop for the number of corners
 			for(int j=0;j<numCorners;j++){
 				int curX = Integer.parseInt(st.nextToken());
 				int curY = Integer.parseInt(st.nextToken());
+
+				if(curX>maxX)	maxX=curX;
+				else if(curX<minX)minX=curX;
 
 				if(!lowestY.containsKey(curX)){
 					lowestY.put(curX, curY);
@@ -65,12 +69,9 @@ public class tinCanTelephone {
 
 			//Now we loop through each y between the two points
 			if(vertical){
-				if(lowestY.containsKey(xJ)&&highestY.containsKey(xJ)){
-					if(xR>=lowestY.get(xJ)&&xR<=lowestY.get(xJ)){
+					if(xR>=maxX&&xR<=minX){
 						counter++;
-						break;
 					}
-				}
 			}
 			for(int j = -1000;j<1000;j++){
 				int curY = slope*j+yInt;
