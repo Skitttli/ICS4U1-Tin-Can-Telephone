@@ -17,11 +17,15 @@ public class tinCanTelephone {
 		//Y coordinate of Jules window, 3 in test case
 		int yJ = Integer.parseInt(st.nextToken());
 
-		boolean vertical=false;
+		boolean vertical=false, horizontal=false;
 		
 		int counter=0,slope,yInt;
 		if(xJ==xR){
 			vertical=true;
+			slope=0;
+			yInt=0;
+		} else if(yJ==yR){
+			horizontal=true;
 			slope=0;
 			yInt=0;
 		}else{
@@ -40,7 +44,7 @@ public class tinCanTelephone {
 			st = new StringTokenizer(br.readLine());
 			// Number of corners the current building has
 			int numCorners = Integer.parseInt(st.nextToken());
-			int maxX = -1001, minX = 1001;
+			int maxX = -1001, minX = 1001,maxY = -1001, minY = 1001;
 
 			//For loop for the number of corners
 			for(int j=0;j<numCorners;j++){
@@ -49,6 +53,9 @@ public class tinCanTelephone {
 
 				if(curX>maxX)	maxX=curX;
 				else if(curX<minX)minX=curX;
+
+				if(curY>maxY) maxY=curY;
+        else if(curY<minY)minY=curY;
 
 				if(!lowestY.containsKey(curX)){
 					lowestY.put(curX, curY);
@@ -69,9 +76,14 @@ public class tinCanTelephone {
 
 			//Now we loop through each y between the two points
 			if(vertical){
-					if(xR>=maxX&&xR<=minX){
+					if(xR<=maxX&&xR>=minX){
 						counter++;
 					}
+			}
+			if(horizontal){
+				if(yR<=maxY&&yR>=minY){
+					counter++;
+				}
 			}
 			for(int j = -1000;j<1000;j++){
 				int curY = slope*j+yInt;
