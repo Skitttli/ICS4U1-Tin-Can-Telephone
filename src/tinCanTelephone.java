@@ -124,26 +124,27 @@ public class tinCanTelephone {
 							// Break because a building can't intercept more then once
 							break;
 						} else {
-							// Check if the wall is above the two kids
-							boolean isAbove = true, isNextAbove = true;
+							// Check if the wall is below the two kids
+							boolean isBelow = true, isNextBelow = true;
 							if (curY > highestY.get(j)) {
-								isAbove = true;
+								isBelow = true;
 							} else {
-								isAbove = false;
+								isBelow = false;
 							}
 							for (int k = j + 1; k < 1000; k++) {
 								if (lowestY.containsKey(k) && highestY.containsKey(k)) {
 									int nextY = slope * k + yInt;
-									if (nextY > highestY.get(j)) {
-										isNextAbove = true;
+									if (nextY > highestY.get(k)) {
+										isNextBelow = true;
 									} else {
-										isNextAbove = false;
+										isNextBelow = false;
 									}
+									break;
 								} else {
-									isAbove = isNextAbove;
+									isBelow = isNextBelow;
 								}
 							}
-							if (isAbove != isNextAbove) {
+							if (isBelow != isNextBelow) {
 								counter++;
 								break;
 							}
