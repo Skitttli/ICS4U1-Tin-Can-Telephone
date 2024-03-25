@@ -111,12 +111,14 @@ public class tinCanTelephone {
 			} else {
 				// Now loop through each x on the grid
 				for (int j = -1000; j < 1000; j++) {
-					// Get the y of the current x coordinate that is being checked using the
-					// equation of a line
-					int curY = slope * j + yInt;
 
 					// Check if there is a wall on the current column
-					if (lowestY.containsKey(j) && highestY.containsKey(j) && j < Math.max(xJ, xR) && j > Math.min(xJ, xR)) {
+					if (lowestY.containsKey(j) && highestY.containsKey(j) && j <= Math.max(xJ, xR)
+							&& j >= Math.min(xJ, xR)) {
+
+						// Get the y of the current x coordinate that is being checked using the
+						// equation of a line
+						int curY = slope * j + yInt;
 
 						// Check if the wall is between the two kids, therefore intercepting their line
 						if (curY <= highestY.get(j) && curY >= lowestY.get(j)) {
@@ -136,7 +138,7 @@ public class tinCanTelephone {
 							}
 							// Find the closest next wall
 							for (int k = j + 1; k < 1000; k++) {
-								if (lowestY.containsKey(k) && highestY.containsKey(k) && k < Math.max(xJ, xR) && k > Math.min(xJ, xR)) {
+								if (lowestY.containsKey(k) && highestY.containsKey(k) && k <= Math.max(xJ, xR) && k >= Math.min(xJ, xR)) {
 									int nextY = slope * k + yInt;
 									// Check if the next wall is above or below the two kids
 									if (nextY < lowestY.get(k)) {
@@ -150,7 +152,7 @@ public class tinCanTelephone {
 									break;
 								// Edge case where there is no next wall
 								} else {
-									isAbove = isNextAbove;
+									isNextAbove = isAbove;
 								}
 							}
 							// If the first wall is above the two kids and the second one is below,
