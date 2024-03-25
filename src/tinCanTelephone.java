@@ -124,27 +124,32 @@ public class tinCanTelephone {
 							// Break because a building can't intercept more then once
 							break;
 						} else {
-							// Check if the wall is below the two kids
-							boolean isBelow = true, isNextBelow = true;
-							if (curY > highestY.get(j)) {
-								isBelow = true;
+							boolean isAbove = true, isNextAbove = true;
+							// Check if the wall is above or below the two kids
+							if (curY < lowestY.get(j)) {
+								isAbove = true;
 							} else {
-								isBelow = false;
+								isAbove = false;
 							}
+							// Find the closest next wall
 							for (int k = j + 1; k < 1000; k++) {
 								if (lowestY.containsKey(k) && highestY.containsKey(k)) {
 									int nextY = slope * k + yInt;
-									if (nextY > highestY.get(k)) {
-										isNextBelow = true;
+									// Check if the next wall is above or below the two kids
+									if (nextY < lowestY.get(k)) {
+										isNextAbove = true;
 									} else {
-										isNextBelow = false;
+										isNextAbove = false;
 									}
 									break;
+								// Edge case where there is no next wall
 								} else {
-									isBelow = isNextBelow;
+									isAbove = isNextAbove;
 								}
 							}
-							if (isBelow != isNextBelow) {
+							// If the first wall is above the two kids and the second one is below,
+							// that must mean their line is intercepted (and vice versa)
+							if (isAbove != isNextAbove) {
 								counter++;
 								break;
 							}
