@@ -1,6 +1,13 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * @author Hunter W, Kiko C
+ * @version 1.3 implemented diagnonal intersection check & fixed edge cases
+ * 
+ * Solves the CCC '06 S3 - Tin Can Telephone (https://dmoj.ca/problem/ccc06s3)
+ */
+
 public class tinCanTelephone {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
